@@ -5,35 +5,39 @@
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="main.js">
     </script>
-    <link href="style.css" rel="stylesheet">
+    <link href="style2/style.css" rel="stylesheet">
     <title></title>
 </head>
 <body>
 <div ng-app="firstApp">
     <br>
     <br>
+
     <div align="center" ng-controller="taskController">
         <input id="task" type="text" ng-model="taskValue">
         <input type="button" ng-click="addTask(taskValue)" value="Add New">
         <br><br><br>
         <table width="50%" align="center" border="1px">
-            <tr align="center">
-                <th>Pending Task</th>
-                <th>Created Date</th>
-                <th>Done</th>
-            </tr>
-            <tr align="center" ng-repeat="t in task">
-                <td  width="50%" >
-                    {{t.name}}
-                </td>
-                <td  width="25%" >
-                    {{t.date}}
-                </td>
-                <td  width="25%" >
-                    <input type="button" ng-click="removeTask($index)" value="Done">
-                </td>
-
-            </tr>
+            <thead>
+                <tr align="center">
+                    <th>Pending Task</th>
+                    <th>Created Date</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align="center" ng-repeat="t in task">
+                    <td width="50%">
+                        {{t.name}}
+                    </td>
+                    <td width="25%">
+                        {{t.date}}
+                    </td>
+                    <td width="25%">
+                        <input type="button" ng-click="removeTask($index)" value="Done">
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

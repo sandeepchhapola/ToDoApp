@@ -1,0 +1,35 @@
+body{
+    background: url("../to-do.jpg" );
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+table {
+    font:0.8em/145% 'Trebuchet MS',helvetica,arial,verdana;
+    border: none;
+}
+
+td, th {
+    padding:5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background:#EFF4FB repeat-x;
+}
+
+thead th, tfoot td {
+    background:#505050  repeat-x;
+    color:#fff;
+    height : 50px;
+    font:1.5em/145% 'Trebuchet MS',helvetica,arial,verdana;
+}
+
+tbody th, tbody td {
+    border-bottom: dotted 1px #333;
+}
+
+tbody th {
+    white-space: nowrap;
+}
+
