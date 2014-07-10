@@ -2,10 +2,15 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <script type="text/javascript" src="angular.min.js"></script>
-    <script type="text/javascript" src="main.js">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery/jquery.js"></script>
+    <script type="text/javascript">
     </script>
-    <link href="style2/style.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <link href="style1/style.css" rel="stylesheet">
     <title></title>
 </head>
 <body>
@@ -13,32 +18,78 @@
     <br>
     <br>
 
-    <div align="center" ng-controller="taskController">
-        <input id="task" type="text" ng-model="taskValue">
-        <input type="button" ng-click="addTask(taskValue)" value="Add New">
+    <div id="maincontent" align="center" ng-controller="taskController">
+        <div align="left"  id="getTaskModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">
+                            <strong>Task Title: </strong>
+                        </h4>
+                        <textarea rows="1" cols="30" id="jobTitle" ng-model="taskTitle"></textarea>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="text-info">
+                            <strong>Task Description</strong>
+                        </h5>
+                        <textarea rows="3" cols="30" id="jobDesc" ng-model="taskDescription"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn-block btn " ng-click="addTask(taskTitle,taskDescription)" data-dismiss="modal" value="Add New">
+                    </div>
+                </div>
+            </div>
+        </div>
         <br><br><br>
-        <table width="50%" align="center" border="1px">
-            <thead>
-                <tr align="center">
+        <input type="button" class="btn bg-primary btn-lg" data-ng-click="addTaskModal()" value="Add New Task">
+        <br><br>
+        <div id="tablecontent" align="center">
+            <table id="table1" width="50%" table table-striped align="center">
+                <thead>
+                <tr class="collapse out" id="collapseme" align="center">
                     <th>Pending Task</th>
+                    <th>Created Time</th>
                     <th>Created Date</th>
                     <th>Done</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr align="center" ng-repeat="t in task">
-                    <td width="50%">
-                        {{t.name}}
+                    <td  mouseon="titleHover" mouseoff="" width="40%" data-ng-click="dispalayTaskModal($index)">
+                       <strong>{{t.title}}</strong>
                     </td>
-                    <td width="25%">
-                        {{t.date}}
+                    <td width="20%">
+                        <strong>{{t.time}}</strong>
                     </td>
-                    <td width="25%">
-                        <input type="button" ng-click="removeTask($index)" value="Done">
+                    <td width="20%">
+                        <strong>{{t.date}}</strong>
+                    </td>
+                    <td width="20%">
+                        <input type="button" class="btn btn-block btn-info" ng-click="removeTask($index)" value="Done">
                     </td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+        <div align="left" id="showTaskModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content sticky-note">
+                    <div class="modal-header">
+                        <strong><u>Task:</u></strong>  {{tsk.title}}
+                    </div>
+                    <div class="modal-body ">
+                        <u><strong>What To Do:</strong></u>  {{tsk.description}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <Div>
+
+        </Div>
     </div>
 </div>
 </body>
